@@ -1,0 +1,74 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "com.example.lenovo.diyitonghang"
+        minSdkVersion 16
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    android {
+        greendao {
+            schemaVersion 1  //数据库的版本
+            daoPackage 'com.example.lenovo.diyitonghang.data.source.local.greendao'
+            // 一般为app包名+生成文件的文件夹名   文件生成的具体目录
+            targetGenDir 'src/main/java/' //生成文件路径
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation deps.support.appcompat
+    implementation deps.support.constraintlayout
+    implementation deps.support.multidex
+    implementation deps.support.annotations
+    implementation files('libs/SecurityEnvSDK-release-1.1.0.jar')
+    implementation files('libs/umeng-common-1.5.3.jar')
+    implementation files('libs/umeng-share-core-6.9.2.jar')
+    implementation files('libs/umeng-share-QQ-simplify-6.9.2.jar')
+    implementation files('libs/umeng-shareboard-widget-6.9.2.jar')
+    implementation files('libs/umeng-sharetool-6.9.2.jar')
+    implementation files('libs/utdid4all-1.1.5.3_proguard.jar')
+
+    implementation deps.retrofit.retrofit
+    implementation deps.retrofit.retrofit_converter_gson
+    implementation deps.retrofit.retrofit_adapter_rxjava2
+    implementation deps.retrofit.retrofit_rxlifecycle_components
+
+    implementation deps.rxjava2.rxjava
+    implementation deps.rxjava2.rxAndroid
+
+
+    implementation deps.greendao.greendao
+    implementation deps.BottomTabBar.bottomtabbar
+
+    implementation deps.tablayout.tablayout
+
+    implementation deps.ViewAdapter.viewadapter
+
+
+    implementation deps.okhttp3.okhttp3
+    implementation deps.okhttp3.logging_interceptor
+
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    annotationProcessor deps.glide.compiler
+
+    implementation deps.glide.glide
+
+    implementation 'com.android.support:support-v4:26.1.0'
+    implementation 'com.android.support:design:26.1.0'
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1'
+
+    implementation 'org.jsoup:jsoup:1.10.2'
+}
